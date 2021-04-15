@@ -1,0 +1,157 @@
+html {
+	font-size: 62.5%;
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	height: 100vh;
+	font-size: 1.6rem;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Layout */
+
+.grid-container {
+	display: grid;
+	grid-template-areas: "header" "main" "footer";
+	grid-template-columns: 1fr;
+	grid-template-rows: 5.5rem 1fr 5rem;
+	height: 100%;
+}
+
+header {
+	grid-area: header;
+	box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+	padding: 0rem 9rem;
+}
+
+main {
+	grid-area: main;
+	padding: 1rem 9rem;
+}
+
+footer {
+	padding: 0rem 9rem;
+	grid-area: footer;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+		rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+		rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+	/* background-color: #354f7e;
+	color: #fff; */
+}
+
+/* Common */
+
+h1 {
+	font-size: 1.8rem;
+	padding: 1rem 0;
+}
+
+h2 {
+	font-size: 1.6rem;
+	padding: 1rem 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	color: #f63537;
+}
+
+/* Header */
+
+header a {
+	color: #000;
+	padding: 0rem 1rem;
+}
+
+.brand-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
+a.brand {
+	color: #000;
+	font-size: 2.5rem;
+	font-weight: bold;
+	margin-bottom: -0.7rem;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.row.center {
+	justify-content: center;
+}
+
+/* Image */
+
+img.medium {
+	/* max-width: 22rem; */
+	width: 100%;
+	height: 200px;
+	object-fit: contain;
+}
+
+.edition {
+	background: #000;
+	box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+		rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+	margin: 1rem;
+	width: 25rem;
+	flex: 1 1 auto;
+	position: relative;
+}
+
+.edition-title {
+	color: white;
+	font-size: 3.5rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.image-edition {
+	width: 100%;
+	opacity: 0.4;
+}
+
+.image-edition:hover {
+	opacity: 1;
+}
+
+/* Card */
+
+.card {
+	box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+		rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+	margin: 1rem;
+	width: 27rem;
+}
+
+.card-body {
+	padding: 1rem;
+}
+
+.card-body > * {
+	margin-bottom: 0.1rem;
+}
+
+.rating {
+	color: #f63537;
+	/* margin: 0.1rem; */
+}
+
+.price {
+	margin: 0.2rem 0rem;
+}

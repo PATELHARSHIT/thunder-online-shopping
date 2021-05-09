@@ -874,7 +874,7 @@ button.grey {
 }
 .form label {
 	margin: 1rem 0;
-	display: block;
+	/* display: block; */
 	font-weight: 600;
 	font-size: 1.4rem;
 }

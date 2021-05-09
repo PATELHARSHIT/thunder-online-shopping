@@ -21,6 +21,7 @@ const initialState = {
 		shippingAddress: localStorage.getItem("shippingAddress")
 			? JSON.parse(localStorage.getItem("shippingAddress"))
 			: {},
+		paymentMethod: "PayPal",
 	},
 	userSignIn: {
 		userInfo: localStorage.getItem("userInfo")

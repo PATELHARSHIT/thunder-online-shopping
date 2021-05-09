@@ -13,12 +13,26 @@ function Product({ product }) {
 					<p>{product.name}</p>
 				</Link>
 				<Rating rating={product.rating} numReviews={product.numReviews} />
-				<p className="price">
-					<strong>
-						<small>₹</small>
-						{product.price}
-					</strong>
-				</p>
+				<div className="row">
+					<p className="price">
+						<b>
+							₹
+							{Math.round(
+								product.price - (product.discount * product.price) / 100
+							)}
+						</b>
+						{product.discount > 0 && (
+							<strike className="pad1">₹{product.price}</strike>
+						)}
+					</p>
+					<div className="row primary">
+						{product.discount > 0 && (
+							<small>
+								<strong>{product.discount}%</strong>
+							</small>
+						)}
+					</div>
+				</div>
 			</div>
 		</div>
 	);

@@ -5,6 +5,7 @@ import MessageBox from "../components/MessageBox";
 import LoadingBox from "../components/LoadingBox";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
+import Title from "../components/Title";
 
 function HomeScreen() {
 	const dispatch = useDispatch();
@@ -12,6 +13,7 @@ function HomeScreen() {
 
 	const { loading, error, products } = productList;
 
+	var count = 5;
 	useEffect(() => {
 		dispatch(listProducts());
 	}, [dispatch]);
@@ -24,11 +26,21 @@ function HomeScreen() {
 			) : (
 				<div>
 					<Edition />
-					<div className="row center">
-						{products.map(product => (
-							<Product key={product._id} product={product} />
-						))}
+					<Title title="Products"></Title>
+					<div>
+						<div className="row space-even">
+							{products.map(
+								product =>
+									count-- > 0 && <Product key={product._id} product={product} />
+							)}
+						</div>
+						<br />
+						<a className="col primary" href="#">
+							<b>View All</b>
+						</a>
 					</div>
+					<br />
+					<br />
 				</div>
 			)}
 		</div>

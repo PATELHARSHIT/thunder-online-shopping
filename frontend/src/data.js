@@ -64,7 +64,7 @@ const data = {
 			_id: "6",
 			name: "Adidas Fit Pant",
 			category: "Pants",
-			image: "/images/p6.jpg",
+			image: "/images/tshirt-t1.jpeg",
 			price: 3339,
 			countInStock: 0,
 			brand: "Adidas",

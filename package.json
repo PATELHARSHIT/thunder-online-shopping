@@ -5,8 +5,16 @@
   "main": "index.js",
   "type": "module",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.6.0",
     "express": "^4.17.1",
-    "react-icons": "^4.2.0"
+    "express-async-handler": "^1.1.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.7",
+    "react-html-parser": "^2.0.2",
+    "react-icons": "^4.2.0",
+    "react-items-carousel": "^2.8.0",
+    "react-responsive-carousel": "^3.2.18"
   },
   "devDependencies": {},
   "scripts": {

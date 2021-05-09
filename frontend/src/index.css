@@ -784,11 +784,13 @@ button.grey {
 
 .savings {
 	font-size: 1.2rem;
-	color: var(--green);
-	background-color: #1d880215;
+	color: var(--primaryColor);
+	/* background-color: #d4edda; */
+	border: 0.1rem solid var(--primaryColor);
 	padding: 0.5rem 1rem;
-	border-radius: 1rem;
+	border-radius: 20rem;
 	margin-top: 3rem;
+	font-size: 1.3rem;
 	/* text-align: center; */
 }
 
@@ -963,4 +965,18 @@ button.grey {
 }
 .dropdown:hover .dropdown-content {
 	display: block;
+}
+
+/* checkout steps */
+.checkout-steps > div {
+	margin-top: 0.5rem;
+	border-top: 0.3rem #c0c0c0 solid;
+	color: #c0c0c0;
+	flex: 1;
+	padding: 1rem;
+	font-weight: bold;
+}
+.checkout-steps > div.active {
+	border-top-color: var(--primaryColor);
+	color: var(--primaryColor);
 }

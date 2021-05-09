@@ -83,7 +83,7 @@ function CartScreen(props) {
 														₹{item.qty * item.price}
 													</strike>
 												</p>
-												<p className="discount success">
+												<p className="discount primary">
 													<span>You saved </span>
 													{item.qty *
 														Math.round((item.discount * item.price) / 100)}
@@ -194,14 +194,14 @@ function CartScreen(props) {
 										<p>Delivery</p>
 										{cartItems.reduce((a, c) => a + c.price * c.qty, 0) >
 										500 ? (
-											<p className="success">FREE</p>
+											<p className="primary">FREE</p>
 										) : (
 											<p className="danger">₹100</p>
 										)}
 									</div>
 									<div className="row">
 										<p>Bag Discount</p>
-										<p className="success">
+										<p className="">
 											₹
 											{cartItems.reduce(
 												(a, c) =>
@@ -212,7 +212,7 @@ function CartScreen(props) {
 									</div>
 									<div className="row">
 										<p>Subtotal</p>
-										<p className="success">
+										<p className="">
 											₹
 											{cartItems.reduce(
 												(a, c) =>
@@ -254,7 +254,7 @@ function CartScreen(props) {
 								<button
 									type="button"
 									onClick={checkoutHandler}
-									className="secondary"
+									className="primary"
 									disabled={cartItems.length === 0}
 								>
 									PROCEED TO CHECKOUT

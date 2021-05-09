@@ -139,7 +139,7 @@ function ProductScreen(props) {
 								</li>
 
 								<li>
-									<small>Select Size</small>
+									{product.countInStock > 0 && <small>Select Size</small>}
 									<div className="size">
 										{product.sizeInStock.map(
 											item =>

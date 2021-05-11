@@ -224,7 +224,7 @@ function ProductScreen(props) {
 							</ul>
 						</div>
 					</div>
-					<div className="product top desc-container row">
+					<div className="product top desc-container">
 						<div>
 							{product.description.desc && (
 								<div>

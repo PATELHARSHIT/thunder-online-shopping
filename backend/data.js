@@ -17,16 +17,16 @@ const data = {
 	],
 	products: [
 		{
-			name: "Rise Black Tshirt",
+			name: "Rapid Dry Trunk T-Shirt",
 			category: "Shirts",
-			image: "/images/p1.jpg",
-			price: 1299,
+			image: "/images/t1.jpeg",
+			price: 499,
 			countInStock: 10,
 			brand: "Thunder",
 			rating: 4.5,
 			numReviews: 10,
 			edition: "Rise",
-			discount: 25,
+			discount: 10,
 			sizeInStock: [
 				{ size: "XS", qty: 3 },
 				{ size: "S", qty: 0 },
@@ -37,19 +37,22 @@ const data = {
 			],
 			description: {
 				desc:
-					"Experience the most Premium Blue with this Men's Indigo AOP Full Sleeves Shirt from our Timeless Indigo Collection. Team this shirt with a pair of trousers, loafers and wayfarers for a smart casual look.",
+					"Go further and faster with the THUNDER Men's Running T-shirt. Designed with Rapid Dry and Anti microbial technology, it wicks away sweat and keeps body odor at bay so you have nothing to think about except how you're going to set a new personal best.",
 				material: {
-					title: "100% COTTEN",
-					subtitle:
-						"Classic, lightweight jersey fabric comprising 100% cotton.",
+					title: "100% POLYSTER",
+					subtitle: "Machine Wash",
+				},
+				fit: {
+					title: "REGULAR",
+					subtitle: "Fits just right - not too tight, not too loose.",
 				},
 			},
 		},
 		{
-			name: "Rise White Tshirt",
+			name: "Rise Printed Tshirt",
 			category: "Shirts",
-			image: "/images/p2.jpg",
-			price: 1999,
+			image: "/images/t2.jpeg",
+			price: 599,
 			countInStock: 20,
 			brand: "Thunder",
 			rating: 5.0,
@@ -79,10 +82,10 @@ const data = {
 			},
 		},
 		{
-			name: "Rise Stripes Tshirt",
+			name: "Rise Grey Tshirt",
 			category: "Shirts",
-			image: "/images/p3.jpg",
-			price: 2209,
+			image: "/images/t3.jpeg",
+			price: 709,
 			countInStock: 0,
 			brand: "Thunder",
 			rating: 4.8,
@@ -112,10 +115,10 @@ const data = {
 			},
 		},
 		{
-			name: "Nike Slim Pant",
-			category: "Pants",
-			image: "/images/p4.jpg",
-			price: 2999,
+			name: "Unstoppable T-Shirt",
+			category: "Shirts",
+			image: "/images/t4.jpeg",
+			price: 699,
 			countInStock: 15,
 			sizeInStock: [
 				{ size: "XS", qty: 3 },
@@ -125,10 +128,10 @@ const data = {
 				{ size: "XL", qty: 4 },
 				{ size: "XXL", qty: 0 },
 			],
-			brand: "Nike",
+			brand: "Thunder",
 			rating: 4.5,
 			numReviews: 14,
-			edition: "Rise",
+			edition: "Unstoppable",
 			discount: 15,
 			description: {
 				desc:
@@ -145,10 +148,39 @@ const data = {
 			},
 		},
 		{
-			name: "Puma Slim Pant",
-			category: "Pants",
-			image: "/images/p5.jpg",
-			price: 3999,
+			name: "Thunder White T-Shirt",
+			category: "Shirts",
+			image: "/images/w3.jpeg",
+			price: 859,
+			countInStock: 0,
+			brand: "Thunder",
+			rating: 4.5,
+			numReviews: 15,
+			sizeInStock: [
+				{ size: "XS", qty: 0 },
+				{ size: "S", qty: 0 },
+				{ size: "M", qty: 0 },
+				{ size: "L", qty: 0 },
+				{ size: "XL", qty: 0 },
+				{ size: "XXL", qty: 0 },
+			],
+			edition: "Thunder",
+			discount: 20,
+			description: {
+				desc:
+					"Experience the most Premium Blue with this Men's Indigo AOP Full Sleeves Shirt from our Timeless Indigo Collection. Team this shirt with a pair of trousers, loafers and wayfarers for a smart casual look.",
+				material: {
+					title: "100% COTTEN",
+					subtitle:
+						"Classic, lightweight jersey fabric comprising 100% cotton.",
+				},
+			},
+		},
+		{
+			name: "Unstoppable Trunk",
+			category: "Shirts",
+			image: "/images/t5.jpeg",
+			price: 899,
 			countInStock: 5,
 			sizeInStock: [
 				{ size: "XS", qty: 1 },
@@ -158,72 +190,10 @@ const data = {
 				{ size: "XL", qty: 1 },
 				{ size: "XXL", qty: 0 },
 			],
-			brand: "Puma",
+			brand: "Thunder",
 			rating: 4.5,
 			numReviews: 10,
-			edition: "Rise",
-			discount: 20,
-			description: {
-				desc:
-					"Experience the most Premium Blue with this Men's Indigo AOP Full Sleeves Shirt from our Timeless Indigo Collection. Team this shirt with a pair of trousers, loafers and wayfarers for a smart casual look.",
-				material: {
-					title: "100% COTTEN",
-					subtitle:
-						"Classic, lightweight jersey fabric comprising 100% cotton.",
-				},
-				fit: {
-					title: "REGULAR",
-					subtitle: "Fits just right - not too tight, not too loose.",
-				},
-			},
-		},
-		{
-			name: "Thunder Black Pant",
-			category: "Pants",
-			image: "/images/p1.jpg",
-			price: 3339,
-			countInStock: 0,
-			brand: "Thunder",
-			rating: 4.5,
-			numReviews: 15,
-			sizeInStock: [
-				{ size: "XS", qty: 0 },
-				{ size: "S", qty: 0 },
-				{ size: "M", qty: 0 },
-				{ size: "L", qty: 0 },
-				{ size: "XL", qty: 0 },
-				{ size: "XXL", qty: 0 },
-			],
-			edition: "Thunder",
-			discount: 20,
-			description: {
-				desc:
-					"Experience the most Premium Blue with this Men's Indigo AOP Full Sleeves Shirt from our Timeless Indigo Collection. Team this shirt with a pair of trousers, loafers and wayfarers for a smart casual look.",
-				material: {
-					title: "100% COTTEN",
-					subtitle:
-						"Classic, lightweight jersey fabric comprising 100% cotton.",
-				},
-			},
-		},
-		{
-			name: "TT2",
-			category: "Pants",
-			image: "/images/p1.jpg",
-			price: 3339,
-			countInStock: 0,
-			sizeInStock: [
-				{ size: "XS", qty: 0 },
-				{ size: "S", qty: 0 },
-				{ size: "M", qty: 0 },
-				{ size: "L", qty: 0 },
-				{ size: "XL", qty: 0 },
-				{ size: "XXL", qty: 0 },
-			],
-			brand: "Thunder",
-			rating: 4.5,
-			numReviews: 15,
-			edition: "Thunder",
+			edition: "Unstoppable",
 			discount: 20,
 			description: {
 				desc:

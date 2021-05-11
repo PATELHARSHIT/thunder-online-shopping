@@ -92,7 +92,7 @@ function CartScreen(props) {
 											</div>
 
 											<div className="row">
-												<div className="select-drop  mr-1">
+												<div className="select-drop mr-1">
 													<span className="select-drop-font">Size</span>
 													<select
 														className="select-drop-font1"
@@ -223,13 +223,16 @@ function CartScreen(props) {
 											)}
 										</p>
 									</div>
-									<div className="savings">
-										You are saving ₹
-										{cartItems.reduce(
-											(a, c) =>
-												a + Math.round((c.discount * c.price) / 100) * c.qty,
-											0
-										)}{" "}
+									<div className="savings alert-danger">
+										You are saving{" "}
+										<b>
+											₹
+											{cartItems.reduce(
+												(a, c) =>
+													a + Math.round((c.discount * c.price) / 100) * c.qty,
+												0
+											)}
+										</b>{" "}
 										on this order
 									</div>
 								</div>

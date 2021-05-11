@@ -10,8 +10,11 @@ function Product({ product }) {
 			</Link>
 			<div className="card-body">
 				<Link to={`/product/${product._id}`}>
-					<p>{product.name}</p>
+					<b>
+						<p>{product.brand}</p>
+					</b>
 				</Link>
+				<span>{product.name}</span>
 				<Rating rating={product.rating} numReviews={product.numReviews} />
 				<div className="row">
 					<p className="price">

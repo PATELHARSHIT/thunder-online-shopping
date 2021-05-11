@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
 	return (
-		<footer className="row center">
+		<footer className="">
 			<div className="footer">
 				{/* <div className="footer-links">
 							<a href="/">Home</a>

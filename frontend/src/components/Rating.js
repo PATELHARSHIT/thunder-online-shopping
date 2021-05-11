@@ -58,7 +58,8 @@ function Rating({ rating, numReviews }) {
 					}
 				></i>
 			</span>
-			<span>{numReviews + " reviews"}</span>
+
+			<small> {numReviews + " reviews"}</small>
 		</div>
 	);
 }

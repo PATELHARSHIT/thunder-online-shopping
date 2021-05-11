@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Texturina:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
 :root {
 	--primaryColor: #f95b5b;
 	--secondaryColor: #42a2a2;
@@ -13,7 +13,6 @@
 	--mainGrey: rgba(0, 0, 0, 0.5);
 	--darkGrey: #cfcfcf;
 	--mainTransition: all 0.3s linear;
-	--mainSpacing: 3px;
 	--lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
 	--darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
 }
@@ -174,7 +173,6 @@ button.block {
 }
 .section-title h4 {
 	font-size: 2rem;
-	letter-spacing: var(--mainSpacing);
 	text-transform: uppercase;
 	margin-bottom: 1rem;
 }
@@ -212,6 +210,7 @@ a.col {
 
 .col-1 {
 	flex: 1 1 25rem;
+	padding: 2rem 1rem 1rem 0rem;
 }
 
 .col-2 {
@@ -253,6 +252,10 @@ a.col {
 }
 
 /* Image */
+img.xsmall {
+	max-width: 5rem;
+	width: 100%;
+}
 
 img.small {
 	max-width: 10rem;
@@ -468,7 +471,6 @@ img.large {
 	text-align: center;
 	font-size: 1.8rem;
 	font-weight: 600;
-	letter-spacing: var(--mainSpacing);
 }
 
 .nav-links a:hover {
@@ -573,7 +575,6 @@ header a {
 	align-items: center;
 	justify-content: center;
 	height: 100%;
-	/* letter-spacing: var(--mainSpacing); */
 }
 
 a.brand {
@@ -588,7 +589,7 @@ a.brand {
 	top: 0.1rem;
 	right: calc(50% - 1.8rem);
 	font-size: 1.1rem;
-	/* border-radius: 50%; */
+	border-radius: 50%;
 	line-height: 1.5;
 	background: var(--primaryColor);
 	width: fit-content;
@@ -979,4 +980,9 @@ button.grey {
 .checkout-steps > div.active {
 	border-top-color: var(--primaryColor);
 	color: var(--primaryColor);
+}
+
+.card-placeorder {
+	border: 0.1rem solid rgba(0, 0, 0, 0.15);
+	padding: 1rem;
 }

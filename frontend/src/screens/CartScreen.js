@@ -26,7 +26,8 @@ function CartScreen(props) {
 	return (
 		<div className="pad">
 			<p>
-				<strong>My Bag</strong> {cartItems.reduce((a, c) => a + c.qty, 0)}
+				<strong>My Bag</strong>{" "}
+				{cartItems.reduce((a, c) => a + Number(c.qty), 0)}
 				<text> item(s) </text>
 			</p>
 			<div className={cartItems.length > 0 && "row top"}>

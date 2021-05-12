@@ -189,6 +189,10 @@ button.block {
 	display: block !important;
 }
 
+.loading i {
+	
+}
+
 /* Header */
 
 .row {

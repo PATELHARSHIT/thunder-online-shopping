@@ -49,9 +49,7 @@ function Header(props) {
 						<div className={isOpen ? "nav-links show-nav" : "nav-links"}>
 							{userInfo ? (
 								<div className="dropdown">
-									<Link to="#">
-										{userInfo.name} <i className="fa fa-caret-down"></i>
-									</Link>
+									<Link to="#">{userInfo.name}</Link>
 									<ul className="dropdown-content">
 										<Link to="#signout" onClick={signOutHandler}>
 											Sign Out

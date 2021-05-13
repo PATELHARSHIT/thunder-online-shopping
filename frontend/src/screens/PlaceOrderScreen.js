@@ -58,7 +58,7 @@ function PlaceOrderScreen(props) {
 					<ul>
 						<li>
 							<div className="card-placeorder">
-								<li className="summary">
+								<li className="summary left-a">
 									<span>SHIPPING ADDRESS</span>
 								</li>
 								<p>
@@ -68,6 +68,14 @@ function PlaceOrderScreen(props) {
 									{cart.shippingAddress.city}, {cart.shippingAddress.postalCode}
 									, {cart.shippingAddress.country}
 								</p>
+							</div>
+						</li>
+
+						<li>
+							<div className="card-placeorder">
+								<li className="summary left-a">
+									<span>PAYMENT</span>
+								</li>
 								<p>
 									<strong>Payment Mode: </strong> {cart.paymentMethod}
 								</p>
@@ -76,12 +84,12 @@ function PlaceOrderScreen(props) {
 
 						<li>
 							<div className="card-placeorder">
-								<li className="summary">
+								<li className="summary left-a">
 									<span>ORDER ITEMS</span>
 								</li>
 								<ul>
 									{cart.cartItems.map(item => (
-										<div className="cart">
+										<div key={item._id} className="cart">
 											<div className="cart-item">
 												<div>
 													<img

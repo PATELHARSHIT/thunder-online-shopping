@@ -1,9 +1,8 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../actions/cartActions";
 import { removeFromWishList } from "../actions/wishlistActions";
-import CloseIcon from "@material-ui/icons/Close";
 
 function WishListProduct(props) {
 	const product = props.product;
@@ -39,17 +38,16 @@ function WishListProduct(props) {
 					</span>
 				</div>
 				<div className="addButton">
-					<a
+					<button
 						onClick={() => removeFromWishlistHandler(product._id)}
-						className="addtocart primary"
+						className="wishlist-btn addtocart"
 					>
-						{/* <CloseIcon fontSize="large" /> */}
 						Remove
-					</a>
+					</button>
 
-					<a onClick={addToCartHandler} className="addtocart">
+					<button onClick={addToCartHandler} className="wishlist-btn addtocart">
 						Add to Bag
-					</a>
+					</button>
 				</div>
 			</div>
 		</div>

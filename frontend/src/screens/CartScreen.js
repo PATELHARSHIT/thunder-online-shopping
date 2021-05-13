@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../actions/cartActions";
-import MessageBox from "../components/MessageBox";
 import { Link } from "react-router-dom";
 import { addToWishList } from "../actions/wishlistActions";
 
@@ -28,13 +27,17 @@ function CartScreen(props) {
 			<p>
 				<strong>My Bag</strong>{" "}
 				{cartItems.reduce((a, c) => a + Number(c.qty), 0)}
-				<text> item(s) </text>
+				<span> item(s) </span>
 			</p>
 			<div className={cartItems.length > 0 && "row top"}>
 				<div className={cartItems.length > 0 && "col-3"}>
 					{cartItems.length === 0 ? (
 						<div className="empty-cart">
-							<img className="medium-cart" src="/images/shopping-bag.png" />
+							<img
+								className="medium-cart"
+								src="/images/shopping-bag.png"
+								alt="empty-cart"
+							/>
 							<h3>Nothing in the bag</h3>
 							<a className="secondary-border" type="button" href="/">
 								Continue Shopping
@@ -44,24 +47,39 @@ function CartScreen(props) {
 						<>
 							{cartItems.reduce((a, c) => a + c.price * c.qty, 0) > 500 ? (
 								<div className="free-delivery-container">
-									<img className="truck" src="/images/delivery-truck.svg" />
+									<img
+										className="truck"
+										src="/images/delivery-truck.svg"
+										alt=""
+									/>
 									<small>Yay! You get FREE delivery on this order</small>
 								</div>
 							) : (
 								<div className="free-delivery-container">
-									<img className="truck" src="/images/delivery-truck.svg" />
+									<img
+										className="truck"
+										src="/images/delivery-truck.svg"
+										alt=""
+									/>
 									<small>
 										Shop for more{" "}
 										<b>
 											₹
-											{500 - cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+											{500 -
+												cartItems.reduce(
+													(a, c) =>
+														a +
+														Math.round(c.price - (c.discount * c.price) / 100) *
+															c.qty,
+													0
+												)}
 										</b>{" "}
 										to avoid Shipping Charge.
 									</small>
 								</div>
 							)}
 							{cartItems.map(item => (
-								<div className="cart">
+								<div className="cart" key={item.product}>
 									<div className="cart-item">
 										<div className="cart-item-info">
 											<div className="cart-info">
@@ -99,7 +117,6 @@ function CartScreen(props) {
 														className="select-drop-font1"
 														value={item.size}
 														onChange={e => {
-															console.log(e.target.value);
 															dispatch(
 																addToCart(
 																	item.product,
@@ -130,9 +147,12 @@ function CartScreen(props) {
 														className="select-drop-font1"
 														value={item.qty}
 														onChange={e => {
-															console.log(e.target.value);
 															dispatch(
-																addToCart(item.product, Number(e.target.value))
+																addToCart(
+																	item.product,
+																	Number(e.target.value),
+																	item.size
+																)
 															);
 														}}
 													>

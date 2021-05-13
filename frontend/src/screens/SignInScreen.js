@@ -13,7 +13,6 @@ function SignInScreen(props) {
 	const redirect = props.location.search
 		? props.location.search.split("=")[1]
 		: "/";
-	console.log(redirect);
 
 	const userSignIn = useSelector(state => state.userSignIn);
 	const { userInfo, loading, error } = userSignIn;

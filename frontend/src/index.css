@@ -190,7 +190,6 @@ button.block {
 }
 
 .loading i {
-	
 }
 
 /* Header */
@@ -395,6 +394,10 @@ img.large {
 .alert-danger {
 	color: #d9534f;
 	background-color: #f8d7da;
+}
+.alert-success {
+	color: var(--green);
+	background-color: #d4edda;
 }
 
 .productscreen-price {
@@ -744,6 +747,10 @@ button.grey {
 	padding: 1rem 0rem;
 }
 
+.left-a {
+	justify-content: flex-start;
+}
+
 .border-1 {
 	border: 0.1rem solid var(--darkGrey);
 	/* border-radius: 0.5rem; */
@@ -807,6 +814,15 @@ button.grey {
 	align-items: center;
 	/* justify-content: space-between; */
 	margin: 1rem 0rem;
+}
+
+.wishlist-btn {
+	background-color: transparent;
+	outline: none;
+	padding: 0;
+	color: var(--primaryColor);
+	border: 0;
+	font-size: 1.5rem;
 }
 
 .wishlist {

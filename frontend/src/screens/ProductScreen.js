@@ -7,7 +7,7 @@ import Rating from "../components/Rating";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { addToWishList, removeFromWishList } from "../actions/wishlistActions";
-import { addToCart, removeFromCart } from "../actions/cartActions";
+import { addToCart } from "../actions/cartActions";
 
 function ProductScreen(props) {
 	const productId = props.match.params.id;
@@ -50,8 +50,6 @@ function ProductScreen(props) {
 		existInCart = false;
 	}
 
-	console.log(wishlistItems, existInWishList);
-
 	useEffect(() => {
 		dispatch(detailsProduct(productId));
 	}, [dispatch, productId]);
@@ -70,7 +68,6 @@ function ProductScreen(props) {
 	};
 
 	const addToWishListHandler = (id, action) => {
-		console.log(action);
 		if (action) {
 			dispatch(addToWishList(id));
 		} else {

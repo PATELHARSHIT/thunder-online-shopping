@@ -35,7 +35,7 @@ function HomeScreen() {
 							)}
 						</div>
 						<br />
-						<a className="col primary" href="#">
+						<a className="col primary" href="/">
 							<b>View All</b>
 						</a>
 					</div>

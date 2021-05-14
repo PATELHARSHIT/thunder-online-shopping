@@ -13,6 +13,7 @@ import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
+import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 
 function App() {
 	return (
@@ -30,6 +31,7 @@ function App() {
 					<Route path="/placeorder" component={PlaceOrderScreen}></Route>
 					<Route path="/product/:id" component={ProductScreen}></Route>
 					<Route path="/order/:id" component={OrderScreen}></Route>
+					<Route path="/orderhistory" component={OrderHistoryScreen}></Route>
 				</main>
 				<Footer />
 			</div>

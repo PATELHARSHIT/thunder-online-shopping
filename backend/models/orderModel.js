@@ -28,7 +28,7 @@ const orderSchema = new mongoose.Schema(
 		paymentResult: {
 			id: { type: String },
 			status: { type: String },
-			update_time: { type: String },
+			update_time: { type: Date },
 			email_address: { type: String },
 		},
 		itemsPrice: { type: Number, required: true },
@@ -42,9 +42,9 @@ const orderSchema = new mongoose.Schema(
 			required: true,
 		},
 		isPaid: { type: Boolean, default: false },
-		paidAt: { type: String },
+		paidAt: { type: Date },
 		isDelivered: { type: Boolean, default: false },
-		deliveredAt: { type: String },
+		deliveredAt: { type: Date },
 	},
 	{ timestamps: true }
 );

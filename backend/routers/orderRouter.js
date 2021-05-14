@@ -5,6 +5,16 @@ import { isAuth } from "../utils.js";
 
 const orderRouter = express.Router();
 
+orderRouter.get(
+	"/mine",
+	isAuth,
+	expressAsyncHandler(async (req, res) => {
+		console.log(req);
+		const orders = await Order.find({ user: req.user._id });
+		res.send(orders);
+	})
+);
+
 orderRouter.post(
 	"/",
 	isAuth,
@@ -49,14 +59,14 @@ orderRouter.put(
 	isAuth,
 	expressAsyncHandler(async (req, res) => {
 		const order = await Order.findById(req.params.id);
-		console.log("req.body.paymentResult", req.body);
+		console.log("req.body.paymentResult", req.body.update_time);
 		if (order) {
 			order.isPaid = true;
-			order.paidAt = Date().toLocaleString();
+			order.paidAt = Date.now();
 			order.paymentResult = {
 				id: req.body.id,
 				status: req.body.status,
-				update_time: req.body.update_time.toLocaleString(),
+				update_time: req.body.update_time,
 				email_address: req.body.email_address,
 			};
 			console.log("order", order);

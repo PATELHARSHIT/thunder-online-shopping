@@ -49,11 +49,22 @@ function Header(props) {
 						<div className={isOpen ? "nav-links show-nav" : "nav-links"}>
 							{userInfo ? (
 								<div className="dropdown">
-									<Link to="#">{userInfo.name}</Link>
+									<Link to="#">
+										<i class="far fa-user"></i>
+									</Link>
 									<ul className="dropdown-content">
-										<Link to="#signout" onClick={signOutHandler}>
-											Sign Out
-										</Link>
+										<li>
+											<a className="disabled">Hi, {userInfo.name}</a>
+										</li>
+										<hr />
+										<li>
+											<Link to="/orderhistory">Order History</Link>
+										</li>
+										<li>
+											<Link to="#signout" onClick={signOutHandler}>
+												Sign Out
+											</Link>
+										</li>
 									</ul>
 								</div>
 							) : (

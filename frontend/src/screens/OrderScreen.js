@@ -31,7 +31,7 @@ function OrderScreen(props) {
 		const paymentResult = {
 			id: uuid(),
 			status: data.status,
-			update_time: Date(),
+			update_time: Date.now(),
 			email_address: data.email,
 		};
 		dispatch(payOrder(order, paymentResult));

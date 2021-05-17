@@ -16,7 +16,10 @@
     "react-items-carousel": "^2.8.0",
     "react-responsive-carousel": "^3.2.18"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^7.26.0",
+    "eslint-plugin-react": "^7.23.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

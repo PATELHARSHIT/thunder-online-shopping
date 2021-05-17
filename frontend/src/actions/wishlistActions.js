@@ -9,7 +9,7 @@ export const addToWishList = productId => async (dispatch, getState) => {
 
 	dispatch({
 		type: WISHLIST_ADD_ITEM,
-		payload: data,
+		payload: { ...data, size: "M" },
 	});
 	localStorage.setItem(
 		"wishlistItems",

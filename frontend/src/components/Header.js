@@ -58,6 +58,9 @@ function Header(props) {
 										</li>
 										<hr />
 										<li>
+											<Link to="/profile">User Profile</Link>
+										</li>
+										<li>
 											<Link to="/orderhistory">Order History</Link>
 										</li>
 										<li>

@@ -8,7 +8,7 @@ function WishListProduct(props) {
 	const product = props.product;
 	const dispatch = useDispatch();
 	const addToCartHandler = () => {
-		dispatch(addToCart(product._id, 1));
+		dispatch(addToCart(product._id, 1, "M"));
 		dispatch(removeFromWishList(product._id));
 	};
 	const removeFromWishlistHandler = id => {

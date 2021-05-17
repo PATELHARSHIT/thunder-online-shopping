@@ -10,8 +10,8 @@
 	--offWhite: #f7f7f7;
 	--mainBlack: #222;
 	--black: #000;
-	--mainGrey: rgba(0, 0, 0, 0.5);
-	--darkGrey: #cfcfcf;
+	--mainGrey: #6c757d;
+	--darkGrey: #dee2e6;
 	--mainTransition: all 0.3s linear;
 	--lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
 	--darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
@@ -900,8 +900,8 @@ button.grey {
 	font-size: 1.5rem;
 	padding: 0rem 0.6rem;
 	outline: none;
-	/* border: 0.1rem solid; */
-	/* border-radius: 0.5rem; */
+	border: 0.1rem solid #adb5bd;
+	border-radius: 0.5rem;
 }
 .form > div {
 	display: flex;

@@ -988,6 +988,7 @@ button.grey {
 	position: relative;
 }
 .dropdown-content {
+	border-top: 0.3rem solid var(--primaryColor);
 	/* position: absolute; */
 	display: none;
 	right: 0;

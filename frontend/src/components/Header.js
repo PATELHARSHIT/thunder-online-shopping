@@ -47,6 +47,27 @@ function Header(props) {
 					</div>
 					<div>
 						<div className={isOpen ? "nav-links show-nav" : "nav-links"}>
+							{userInfo && userInfo.isAdmin && (
+								<div className="dropdown">
+									<Link to="#admin">
+										Admin <i className="fa fa-caret-down"></i>
+									</Link>
+									<ul className="dropdown-content">
+										<li>
+											<Link to="/dashboard">Dashboard</Link>
+										</li>
+										<li>
+											<Link to="/productlist">Products</Link>
+										</li>
+										<li>
+											<Link to="/orderlist">Orders</Link>
+										</li>
+										<li>
+											<Link to="/userlist">Users</Link>
+										</li>
+									</ul>
+								</div>
+							)}
 							{userInfo ? (
 								<div className="dropdown">
 									<Link to="#">
@@ -54,7 +75,9 @@ function Header(props) {
 									</Link>
 									<ul className="dropdown-content">
 										<li>
-											<a className="disabled">Hi, {userInfo.name}</a>
+											<span className="disabled" href="#">
+												Hi, {userInfo.name}
+											</span>
 										</li>
 										<hr />
 										<li>
@@ -73,6 +96,7 @@ function Header(props) {
 							) : (
 								<Link to="/signin">LOGIN</Link>
 							)}
+
 							<div className="cart-container">
 								<Link to="/wishlist">
 									<FavoriteBorderIcon fontSize="large" />

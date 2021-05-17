@@ -390,9 +390,11 @@ img.large {
 }
 
 .alert {
-	padding: 1.2rem;
-	border: 0.1rem solid transparent;
-	border-radius: 0.5rem;
+	padding: 0.75rem 1.25rem;
+	margin-bottom: 1rem;
+	border: 1px solid transparent;
+	border-radius: 0.25rem;
+	font-size: 1.4rem;
 }
 
 .alert-info {
@@ -401,11 +403,11 @@ img.large {
 }
 
 .alert-danger {
-	color: #d9534f;
-	background-color: #f8d7da;
+	color: #721c24;
+	background-color: #fff3cd;
 }
 .alert-success {
-	color: var(--green);
+	color: #155724;
 	background-color: #d4edda;
 }
 

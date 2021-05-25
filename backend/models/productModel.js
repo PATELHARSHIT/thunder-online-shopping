@@ -18,6 +18,7 @@ const productSchema = new mongoose.Schema(
 		rating: { type: Number, required: true },
 		numReviews: { type: Number, required: true },
 		sizeInStock: [{ size: { type: String }, qty: { type: Number } }],
+		gender: { type: String, required: true },
 	},
 	{
 		timestamps: true,

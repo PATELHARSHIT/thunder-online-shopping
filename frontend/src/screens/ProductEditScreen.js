@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { detailsProduct } from "../actions/productActions";
+import { detailsProduct, updateProduct } from "../actions/productActions";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
+import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
 
 function ProductEditScreen(props) {
 	const productId = props.match.params.id;
@@ -20,28 +21,77 @@ function ProductEditScreen(props) {
 	const [price, setPrice] = useState("");
 	const [discount, setDiscount] = useState("");
 	const [sizeqty, setSizeqty] = useState("");
-	const [countInStock, setCountInStock] = useState([]);
+	const [sizeInStock, setSizeInStock] = useState([]);
+	const [countInStock, setCountInStock] = useState("");
+	const [gender, setGender] = useState("male");
 
 	const productDetails = useSelector(state => state.productDetails);
 	const { loading, error, product } = productDetails;
+
+	const productUpdate = useSelector(state => state.productUpdate);
+	const {
+		loading: loadingUpdate,
+		error: errorUpdate,
+		success: successUpdate,
+	} = productUpdate;
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		if (!product || product._id !== productId) {
+		if (successUpdate) {
+			props.history.push("/productlist");
+		}
+
+		if (!product || product._id !== productId || successUpdate) {
+			dispatch({ type: PRODUCT_UPDATE_RESET });
 			dispatch(detailsProduct(productId));
 		} else {
+			setName(product.name);
+			setPrice(product.price);
+			setImage(product.image);
+			setCategory(product.category);
+			setSizeInStock(product.sizeInStock);
+			setCountInStock(product.countInStock);
+			setBrand(product.brand);
+			setDesc(product.description.desc);
+			setMaterialTitle(product.description.material.title);
+			setMaterialSubTitle(product.description.material.subtitle);
+			setFitTitle(product.description.fit.title);
+			setFitSubTitle(product.description.fit.subtitle);
+			setEdition(product.edition);
+			setDiscount(product.discount);
+			setGender(product.gender);
 		}
-	}, [product, dispatch, productId]);
+	}, [product, dispatch, productId, successUpdate, props.history]);
 
 	const submitHandler = e => {
 		e.preventDefault();
-		// TODO: dispatch update product
+		dispatch(
+			updateProduct({
+				_id: productId,
+				name,
+				image,
+				brand,
+				edition,
+				category,
+				desc,
+				materialTitle,
+				materialSubTitle,
+				fitTitle,
+				fitSubTitle,
+				price,
+				discount,
+				sizeInStock,
+				countInStock,
+				gender,
+			})
+		);
 	};
 
 	const handleSizeQty = () => {
 		if (sizeqty) {
 			let [size, qty] = sizeqty.split("-");
-			setCountInStock(prevCountInStock => [...prevCountInStock, { size, qty }]);
+			setSizeInStock(prevCountInStock => [...prevCountInStock, { size, qty }]);
 		}
 	};
 
@@ -51,6 +101,8 @@ function ProductEditScreen(props) {
 				<div>
 					<h1>Edit Product {productId}</h1>
 				</div>
+				{loadingUpdate && <LoadingBox></LoadingBox>}
+				{errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
 				{loading ? (
 					<LoadingBox />
 				) : error ? (
@@ -95,6 +147,16 @@ function ProductEditScreen(props) {
 								placeholder="Enter Category"
 								value={category}
 								onChange={e => setCategory(e.target.value)}
+							></input>
+						</div>
+						<div>
+							<label htmlFor="gender">Gender</label>
+							<input
+								id="gender"
+								type="text"
+								placeholder="Enter Gender"
+								value={gender}
+								onChange={e => setGender(e.target.value)}
 							></input>
 						</div>
 						<div>
@@ -181,6 +243,16 @@ function ProductEditScreen(props) {
 								onChange={e => setFitSubTitle(e.target.value)}
 							></textarea>
 						</div>
+						<div>
+							<label htmlFor="countInStock">Stock Count</label>
+							<input
+								id="countInStock"
+								type="text"
+								placeholder="Enter Stock Count"
+								value={countInStock}
+								onChange={e => setCountInStock(e.target.value)}
+							></input>
+						</div>
 
 						<div>
 							<label htmlFor="sizeqty">Size - Qty</label>
@@ -198,10 +270,10 @@ function ProductEditScreen(props) {
 									marginTop: "1rem",
 								}}
 							>
-								{countInStock &&
-									countInStock.map(data => {
+								{sizeInStock.length > 0 &&
+									sizeInStock.map(data => {
 										return (
-											<div className="sizeqty">
+											<div key={data.size} className="sizeqty">
 												{data.size} - {data.qty}
 											</div>
 										);
@@ -229,6 +301,7 @@ function ProductEditScreen(props) {
 								Back
 							</button>
 							<button
+								onClick={submitHandler}
 								style={{ width: "15rem" }}
 								className="primary"
 								type="submit"

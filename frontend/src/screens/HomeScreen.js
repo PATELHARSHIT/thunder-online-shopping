@@ -13,7 +13,7 @@ function HomeScreen() {
 
 	const { loading, error, products } = productList;
 
-	var count = 5;
+	var count = 15;
 	useEffect(() => {
 		dispatch(listProducts());
 	}, [dispatch]);

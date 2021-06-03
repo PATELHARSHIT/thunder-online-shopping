@@ -17,6 +17,7 @@ const data = {
 	],
 	products: [
 		{
+			gender: "male",
 			name: "Rapid Dry Trunk T-Shirt",
 			category: "Shirts",
 			image: "/images/t1.jpeg",
@@ -36,8 +37,7 @@ const data = {
 				{ size: "XXL", qty: 0 },
 			],
 			description: {
-				desc:
-					"Go further and faster with the THUNDER Men's Running T-shirt. Designed with Rapid Dry and Anti microbial technology, it wicks away sweat and keeps body odor at bay so you have nothing to think about except how you're going to set a new personal best.",
+				desc: "Go further and faster with the THUNDER Men's Running T-shirt. Designed with Rapid Dry and Anti microbial technology, it wicks away sweat and keeps body odor at bay so you have nothing to think about except how you're going to set a new personal best.",
 				material: {
 					title: "100% POLYSTER",
 					subtitle: "Machine Wash",
@@ -49,6 +49,7 @@ const data = {
 			},
 		},
 		{
+			gender: "male",
 			name: "Rise Printed Tshirt",
 			category: "Shirts",
 			image: "/images/t2.jpeg",
@@ -68,8 +69,7 @@ const data = {
 				{ size: "XXL", qty: 3 },
 			],
 			description: {
-				desc:
-					"Experience the most Premium Blue with this Men's Indigo AOP Full Sleeves Shirt from our Timeless Indigo Collection. Team this shirt with a pair of trousers, loafers and wayfarers for a smart casual look.",
+				desc: "Experience the most Premium Blue with this Men's Indigo AOP Full Sleeves Shirt from our Timeless Indigo Collection. Team this shirt with a pair of trousers, loafers and wayfarers for a smart casual look.",
 				material: {
 					title: "100% COTTEN",
 					subtitle:
@@ -82,6 +82,7 @@ const data = {
 			},
 		},
 		{
+			gender: "male",
 			name: "Rise Grey Tshirt",
 			category: "Shirts",
 			image: "/images/t3.jpeg",
@@ -101,8 +102,7 @@ const data = {
 			edition: "Rise",
 			discount: 0,
 			description: {
-				desc:
-					"Experience the most Premium Blue with this Men's Indigo AOP Full Sleeves Shirt from our Timeless Indigo Collection. Team this shirt with a pair of trousers, loafers and wayfarers for a smart casual look.",
+				desc: "Experience the most Premium Blue with this Men's Indigo AOP Full Sleeves Shirt from our Timeless Indigo Collection. Team this shirt with a pair of trousers, loafers and wayfarers for a smart casual look.",
 				material: {
 					title: "100% COTTEN",
 					subtitle:
@@ -115,6 +115,7 @@ const data = {
 			},
 		},
 		{
+			gender: "male",
 			name: "Unstoppable T-Shirt",
 			category: "Shirts",
 			image: "/images/t4.jpeg",
@@ -134,8 +135,7 @@ const data = {
 			edition: "Unstoppable",
 			discount: 15,
 			description: {
-				desc:
-					"Experience the most Premium Blue with this Men's Indigo AOP Full Sleeves Shirt from our Timeless Indigo Collection. Team this shirt with a pair of trousers, loafers and wayfarers for a smart casual look.",
+				desc: "Experience the most Premium Blue with this Men's Indigo AOP Full Sleeves Shirt from our Timeless Indigo Collection. Team this shirt with a pair of trousers, loafers and wayfarers for a smart casual look.",
 				material: {
 					title: "100% COTTEN",
 					subtitle:
@@ -148,35 +148,39 @@ const data = {
 			},
 		},
 		{
+			gender: "female",
 			name: "Thunder White T-Shirt",
 			category: "Shirts",
-			image: "/images/w3.jpeg",
+			image: "/images/w5.jpeg",
 			price: 859,
-			countInStock: 0,
+			countInStock: 10,
 			brand: "Thunder",
 			rating: 4.5,
 			numReviews: 15,
 			sizeInStock: [
-				{ size: "XS", qty: 0 },
-				{ size: "S", qty: 0 },
+				{ size: "XS", qty: 3 },
+				{ size: "S", qty: 4 },
 				{ size: "M", qty: 0 },
-				{ size: "L", qty: 0 },
+				{ size: "L", qty: 3 },
 				{ size: "XL", qty: 0 },
 				{ size: "XXL", qty: 0 },
 			],
 			edition: "Thunder",
 			discount: 20,
 			description: {
-				desc:
-					"Experience the most Premium Blue with this Men's Indigo AOP Full Sleeves Shirt from our Timeless Indigo Collection. Team this shirt with a pair of trousers, loafers and wayfarers for a smart casual look.",
+				desc: "Experience the most Premium Blue with this Men's Indigo AOP Full Sleeves Shirt from our Timeless Indigo Collection. Team this shirt with a pair of trousers, loafers and wayfarers for a smart casual look.",
 				material: {
-					title: "100% COTTEN",
-					subtitle:
-						"Classic, lightweight jersey fabric comprising 100% cotton.",
+					title: "100% POLYSTER",
+					subtitle: "Machine Wash",
+				},
+				fit: {
+					title: "REGULAR",
+					subtitle: "Fits just right - not too tight, not too loose.",
 				},
 			},
 		},
 		{
+			gender: "male",
 			name: "Unstoppable Trunk",
 			category: "Shirts",
 			image: "/images/t5.jpeg",
@@ -196,8 +200,7 @@ const data = {
 			edition: "Unstoppable",
 			discount: 20,
 			description: {
-				desc:
-					"Experience the most Premium Blue with this Men's Indigo AOP Full Sleeves Shirt from our Timeless Indigo Collection. Team this shirt with a pair of trousers, loafers and wayfarers for a smart casual look.",
+				desc: "Experience the most Premium Blue with this Men's Indigo AOP Full Sleeves Shirt from our Timeless Indigo Collection. Team this shirt with a pair of trousers, loafers and wayfarers for a smart casual look.",
 				material: {
 					title: "100% COTTEN",
 					subtitle:

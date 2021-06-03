@@ -9,11 +9,11 @@ function Product({ product }) {
 				<img className="medium" src={product.image} alt={product.name} />
 			</Link>
 			<div className="card-body">
-				<Link to={`/product/${product._id}`}>
+				{/* <Link to={`/product/${product._id}`}>
 					<b>
 						<p>{product.brand}</p>
 					</b>
-				</Link>
+				</Link> */}
 				<span>{product.name}</span>
 				<Rating rating={product.rating} numReviews={product.numReviews} />
 				<div className="row">

@@ -120,7 +120,7 @@ li {
 
 button {
 	padding: 1rem;
-	border-radius: 0.5rem;
+	/* border-radius: 0.3rem; */
 	cursor: pointer;
 }
 
@@ -146,9 +146,9 @@ button.primary {
 
 button.primary:hover {
 	background-color: transparent;
-	border: 0.2rem solid var(--primaryColor);
+	border: 0.1rem solid var(--primaryColor);
 	outline: none;
-	border-radius: 0.5rem;
+	/* border-radius: 0.3rem; */
 	font-weight: 600;
 	color: var(--primaryColor);
 	cursor: pointer;
@@ -156,9 +156,9 @@ button.primary:hover {
 
 button.secondary:hover {
 	background-color: transparent;
-	border: 0.2rem solid var(--secondaryColor);
+	border: 0.1rem solid var(--secondaryColor);
 	outline: none;
-	border-radius: 0.5rem;
+	/* border-radius: 0.3rem; */
 	font-weight: 600;
 	color: var(--secondaryColor);
 	cursor: pointer;
@@ -429,7 +429,7 @@ img.large {
 	display: flex;
 	border: 1px solid var(--darkGrey);
 	padding: 0.7rem 0.3rem;
-	border-radius: 0.5rem;
+	/* border-radius: 0.3rem; */
 	width: fit-content;
 	font-family: "Montserrat", sans-serif;
 }
@@ -657,7 +657,7 @@ a.brand {
 .cart {
 	border: 0.1rem solid var(--darkGrey);
 	margin: 1rem 0rem;
-	border-radius: 0.5rem;
+	/* border-radius: 0.3rem; */
 }
 
 .cart-item {
@@ -722,9 +722,9 @@ button.grey {
 
 .secondary-border {
 	background-color: transparent;
-	border: 0.2rem solid var(--secondaryColor);
+	border: 0.1rem solid var(--secondaryColor);
 	outline: none;
-	border-radius: 0.5rem;
+	/* border-radius: 0.3rem; */
 	font-family: inherit;
 	font-size: 1.5rem;
 	font-weight: 600;
@@ -735,9 +735,9 @@ button.grey {
 
 .primary-border {
 	background-color: transparent;
-	border: 0.2rem solid var(--primaryColor);
+	border: 0.1rem solid var(--primaryColor);
 	outline: none;
-	border-radius: 0.5rem;
+	/* border-radius: 0.3rem; */
 	font-family: inherit;
 	font-size: 1.5rem;
 	font-weight: 600;
@@ -771,7 +771,7 @@ button.grey {
 
 .border-1 {
 	border: 0.1rem solid var(--darkGrey);
-	border-radius: 0.5rem;
+	/* border-radius: 0.3rem; */
 }
 
 .border-top {
@@ -907,7 +907,7 @@ button.grey {
 	padding: 0rem 0.6rem;
 	outline: none;
 	border: 0.1rem solid #adb5bd;
-	border-radius: 0.5rem;
+	/* border-radius: 0.3rem; */
 }
 .form > div {
 	display: flex;
@@ -1039,7 +1039,7 @@ button.grey {
 .card-placeorder {
 	border: 0.1rem solid rgba(0, 0, 0, 0.15);
 	padding: 1rem;
-	border-radius: 0.5rem;
+	/* border-radius: 0.3rem; */
 }
 
 .table {

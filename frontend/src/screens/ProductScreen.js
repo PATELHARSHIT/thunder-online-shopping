@@ -90,7 +90,7 @@ function ProductScreen(props) {
 						<div className="col-2">
 							<ul>
 								<li>
-									<h1>{product.name}</h1>
+									<b>{product.name}</b> <br />
 									<span>by {product.brand}</span>
 								</li>
 

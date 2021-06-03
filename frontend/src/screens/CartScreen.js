@@ -22,6 +22,10 @@ function CartScreen(props) {
 		props.history.push("/signin?redirect=shipping");
 	};
 
+	const handleSize = (product, qty, value) => {
+		dispatch(addToCart(product, qty, value));
+	};
+
 	return (
 		<div className="pad">
 			<p>
@@ -117,12 +121,10 @@ function CartScreen(props) {
 														className="select-drop-font1"
 														value={item.size}
 														onChange={e => {
-															dispatch(
-																addToCart(
-																	item.product,
-																	item.qty,
-																	e.target.value
-																)
+															handleSize(
+																item.product,
+																item.qty,
+																e.target.value
 															);
 														}}
 													>

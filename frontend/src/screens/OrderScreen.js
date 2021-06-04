@@ -2,18 +2,23 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { detailsOrder, payOrder } from "../actions/orderActions";
+import { deliverOrder, detailsOrder, payOrder } from "../actions/orderActions";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import GooglePayButton from "@google-pay/button-react";
 import uuid from "react-uuid";
-import { ORDER_PAY_RESET } from "../constants/orderConstants";
+import {
+	ORDER_DELIVER_RESET,
+	ORDER_PAY_RESET,
+} from "../constants/orderConstants";
 
 function OrderScreen(props) {
 	const dispatch = useDispatch();
 	const orderId = props.match.params.id;
 	const orderDetails = useSelector(state => state.orderDetails);
 	const { loading, error, order } = orderDetails;
+	const userSignIn = useSelector(state => state.userSignIn);
+	const { userInfo } = userSignIn;
 
 	const orderPay = useSelector(state => state.orderPay);
 	const {
@@ -21,12 +26,26 @@ function OrderScreen(props) {
 		error: errorPay,
 		success: successPay,
 	} = orderPay;
+
+	const orderDeliver = useSelector(state => state.orderDeliver);
+	const {
+		loading: loadingDeliver,
+		error: errorDeliver,
+		success: successDeliver,
+	} = orderDeliver;
+
 	useEffect(() => {
-		if (!order || successPay || (order && order._id !== orderId)) {
+		if (
+			!order ||
+			successPay ||
+			successDeliver ||
+			(order && order._id !== orderId)
+		) {
 			dispatch({ type: ORDER_PAY_RESET });
+			dispatch({ type: ORDER_DELIVER_RESET });
 			dispatch(detailsOrder(orderId));
 		}
-	}, [dispatch, orderId, successPay, order]);
+	}, [dispatch, orderId, successPay, order, successDeliver]);
 	const successPaymentHandler = data => {
 		const paymentResult = {
 			id: uuid(),
@@ -35,6 +54,10 @@ function OrderScreen(props) {
 			email_address: data.email,
 		};
 		dispatch(payOrder(order, paymentResult));
+	};
+
+	const deliverHandler = () => {
+		dispatch(deliverOrder(order._id));
 	};
 
 	return loading ? (
@@ -250,6 +273,21 @@ function OrderScreen(props) {
 									</>
 								)}
 							</li>
+							{userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+								<li>
+									{loadingDeliver && <LoadingBox></LoadingBox>}
+									{errorDeliver && (
+										<MessageBox variant="danger">{errorDeliver}</MessageBox>
+									)}
+									<button
+										type="button"
+										className="primary block"
+										onClick={deliverHandler}
+									>
+										Deliver Order
+									</button>
+								</li>
+							)}
 						</ul>
 					</div>
 				</div>

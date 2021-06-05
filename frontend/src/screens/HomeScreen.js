@@ -13,9 +13,9 @@ function HomeScreen() {
 
 	const { loading, error, products } = productList;
 
-	var count = 15;
+	var count = 5;
 	useEffect(() => {
-		dispatch(listProducts());
+		dispatch(listProducts({}));
 	}, [dispatch]);
 	return (
 		<div>
@@ -35,7 +35,7 @@ function HomeScreen() {
 							)}
 						</div>
 						<br />
-						<a className="col primary" href="/">
+						<a className="col primary" href="/search/name/all">
 							<b>View All</b>
 						</a>
 					</div>

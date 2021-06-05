@@ -1,5 +1,8 @@
 import Axios from "axios";
 import {
+	PRODUCT_CATEGORY_LIST_FAIL,
+	PRODUCT_CATEGORY_LIST_REQUEST,
+	PRODUCT_CATEGORY_LIST_SUCCESS,
 	PRODUCT_CREATE_FAIL,
 	PRODUCT_CREATE_REQUEST,
 	PRODUCT_CREATE_SUCCESS,
@@ -9,6 +12,9 @@ import {
 	PRODUCT_DETAILS_FAIL,
 	PRODUCT_DETAILS_REQUEST,
 	PRODUCT_DETAILS_SUCCESS,
+	PRODUCT_EDITION_LIST_FAIL,
+	PRODUCT_EDITION_LIST_REQUEST,
+	PRODUCT_EDITION_LIST_SUCCESS,
 	PRODUCT_LIST_FAIL,
 	PRODUCT_LIST_REQUEST,
 	PRODUCT_LIST_SUCCESS,
@@ -17,15 +23,52 @@ import {
 	PRODUCT_UPDATE_SUCCESS,
 } from "../constants/productConstants";
 
-export const listProducts = () => async dispatch => {
+export const listProducts =
+	({
+		name = "",
+		category = "",
+		edition = "",
+		gender = "",
+		order = "",
+		min = 0,
+		max = 0,
+		rating = 0,
+	}) =>
+	async dispatch => {
+		dispatch({
+			type: PRODUCT_LIST_REQUEST,
+		});
+		try {
+			const { data } = await Axios.get(
+				`/api/products?name=${name}&category=${category}&edition=${edition}&gender=${gender}&min=${min}&max=${max}&rating=${rating}&order=${order}`
+			);
+			dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
+		} catch (error) {
+			dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
+		}
+	};
+
+export const listProductCategories = () => async dispatch => {
 	dispatch({
-		type: PRODUCT_LIST_REQUEST,
+		type: PRODUCT_CATEGORY_LIST_REQUEST,
 	});
 	try {
-		const { data } = await Axios.get("/api/products");
-		dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
+		const { data } = await Axios.get(`/api/products/categories`);
+		dispatch({ type: PRODUCT_CATEGORY_LIST_SUCCESS, payload: data });
 	} catch (error) {
-		dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
+		dispatch({ type: PRODUCT_CATEGORY_LIST_FAIL, payload: error.message });
+	}
+};
+
+export const listProductEditions = () => async dispatch => {
+	dispatch({
+		type: PRODUCT_EDITION_LIST_REQUEST,
+	});
+	try {
+		const { data } = await Axios.get(`/api/products/editions`);
+		dispatch({ type: PRODUCT_EDITION_LIST_SUCCESS, payload: data });
+	} catch (error) {
+		dispatch({ type: PRODUCT_EDITION_LIST_FAIL, payload: error.message });
 	}
 };
 

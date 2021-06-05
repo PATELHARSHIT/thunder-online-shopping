@@ -9,8 +9,69 @@ const productRouter = express.Router();
 productRouter.get(
 	"/",
 	expressAsyncHandler(async (req, res) => {
-		const products = await Product.find({});
+		const name = req.query.name || "";
+		const category = req.query.category || "";
+		const edition = req.query.edition || "";
+		const gender = req.query.gender || "";
+		const order = req.query.order || "";
+		const min =
+			req.query.min && Number(req.query.min) !== 0 ? Number(req.query.min) : 0;
+		const max =
+			req.query.max && Number(req.query.max) !== 0 ? Number(req.query.max) : 0;
+		const rating =
+			req.query.rating && Number(req.query.rating) !== 0
+				? Number(req.query.rating)
+				: 0;
+
+		const nameFilter = name ? { name: { $regex: name, $options: "i" } } : {};
+		const categoryFilter = category ? { category } : {};
+		const editionFilter = edition ? { edition } : {};
+		const genderFilter = gender ? { gender } : {};
+		const priceFilter = min && max ? { price: { $gte: min, $lte: max } } : {};
+		const ratingFilter = rating ? { rating: { $gte: rating } } : {};
+		const sortOrder =
+			order === "lowest"
+				? { price: 1 }
+				: order === "highest"
+				? { price: -1 }
+				: order === "toprated"
+				? { rating: -1 }
+				: { _id: -1 };
+
+		console.log(`query: -->`, {
+			...nameFilter,
+			...categoryFilter,
+			...editionFilter,
+			...genderFilter,
+			...priceFilter,
+			...ratingFilter,
+		});
+
+		const products = await Product.find({
+			...nameFilter,
+			...categoryFilter,
+			...editionFilter,
+			...genderFilter,
+			...priceFilter,
+			...ratingFilter,
+		}).sort(sortOrder);
 		res.send(products);
+	})
+);
+
+productRouter.get(
+	"/categories",
+	expressAsyncHandler(async (req, res) => {
+		const categories = await Product.find().distinct("category");
+		res.send(categories);
+	})
+);
+
+productRouter.get(
+	"/editions",
+	expressAsyncHandler(async (req, res) => {
+		const editions = await Product.find().distinct("edition");
+		res.send(editions);
 	})
 );
 

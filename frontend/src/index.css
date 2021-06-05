@@ -49,7 +49,7 @@ body {
 	display: grid;
 	grid-template-areas: "header" "main" "footer";
 	grid-template-columns: 1fr;
-	grid-template-rows: 6rem 1fr 5rem;
+	grid-template-rows: 6rem 1fr 6rem;
 	height: 100%;
 }
 
@@ -222,8 +222,8 @@ a.col {
 }
 
 .col-1 {
-	flex: 1 1 25rem;
-	padding: 2rem 1rem 1rem 0rem;
+	flex: 1 1 15rem;
+	padding: 2rem 1rem 1rem 2rem;
 }
 
 .col-2 {
@@ -512,6 +512,19 @@ img.large {
 		/* background-color: #fff; */
 		margin: 0;
 		box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+	}
+	.dropdown-content-sort {
+		position: absolute;
+		background-color: white;
+		font-size: 1.3rem;
+		padding: 1rem;
+		display: none;
+		z-index: 1;
+		width: max-content;
+		box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+	}
+	.dropdown-content-sort > :first-child {
+		padding-top: 0rem !important;
 	}
 	.dropdown-content > li {
 		margin-top: 0;
@@ -1018,6 +1031,18 @@ button.grey {
 	/* margin-top: 0.4rem; */
 	box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 }
+
+.dropdown-content-sort {
+	font-size: 1.3rem;
+	padding: 0.5rem 1rem;
+	display: none;
+	z-index: 1;
+}
+
+.dropdown:hover .dropdown-content-sort {
+	display: block;
+}
+
 .dropdown:hover .dropdown-content {
 	display: block;
 }
@@ -1060,4 +1085,71 @@ button.grey {
 
 .table button {
 	margin: 0 0.2rem;
+}
+
+/* Search */
+
+.wrapper {
+	max-width: 100%;
+	padding: 0 1rem;
+	background: white;
+	border: 1px solid var(--darkGrey);
+	border-radius: 1.5em;
+	overflow: hidden;
+	/* box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px; */
+}
+.search {
+	display: flex;
+	height: 3.5rem;
+	align-items: center;
+}
+.search input {
+	outline: none;
+	border: none;
+	flex: 1;
+	width: 100%;
+	border: 0;
+	font-size: 1.5rem;
+	background-color: transparent;
+}
+
+.search button {
+	background-color: transparent;
+	border: none;
+	border: none;
+}
+
+.search button i {
+	color: var(--primaryColor);
+	font-size: 1.8rem;
+	padding: 0;
+}
+
+:focus {
+	outline: none;
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.active {
+	font-weight: bold;
+	color: var(--primaryColor);
+}
+
+.searchscreen h3 {
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 1.8rem;
+	margin-left: -0.7rem;
+}
+
+.searchscreen small {
+	font-size: 1.4rem;
+	margin-left: -0.7rem;
 }

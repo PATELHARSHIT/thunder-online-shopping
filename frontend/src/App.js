@@ -22,6 +22,7 @@ import ProductEditScreen from "./screens/ProductEditScreen";
 import OrderListScreen from "./screens/OrderListScreen";
 import UserListScreen from "./screens/UserListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
+import SearchScreen from "./screens/SearchScreen";
 
 function App() {
 	return (
@@ -40,6 +41,46 @@ function App() {
 					<Route path="/product/:id" component={ProductScreen} exact></Route>
 					<Route path="/order/:id" component={OrderScreen}></Route>
 					<Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+					<Route
+						path="/search/name/:name?"
+						component={SearchScreen}
+						exact
+					></Route>
+					<Route
+						path="/search/category/:category"
+						component={SearchScreen}
+						exact
+					></Route>
+					<Route
+						path="/search/edition/:edition"
+						component={SearchScreen}
+						exact
+					></Route>
+					<Route
+						path="/search/gender/:gender"
+						component={SearchScreen}
+						exact
+					></Route>
+					<Route
+						path="/search/category/:category/name/:name"
+						component={SearchScreen}
+						exact
+					></Route>
+					<Route
+						path="/search/category/:category/name/:name/edition/:edition"
+						component={SearchScreen}
+						exact
+					></Route>
+					<Route
+						path="/search/category/:category/name/:name/edition/:edition/gender/:gender"
+						component={SearchScreen}
+						exact
+					></Route>
+					<Route
+						path="/search/category/:category/name/:name/edition/:edition/gender/:gender/min/:min/max/:max/rating/:rating/order/:order"
+						component={SearchScreen}
+						exact
+					></Route>
 					<AdminRoute
 						path="/user/:id/edit"
 						component={UserEditScreen}
@@ -61,6 +102,7 @@ function App() {
 						path="/orderlist"
 						component={OrderListScreen}
 					></AdminRoute>
+
 					<AdminRoute path="/userlist" component={UserListScreen}></AdminRoute>
 				</main>
 				<Footer />

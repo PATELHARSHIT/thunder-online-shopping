@@ -1,10 +1,19 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { FaAlignRight } from "react-icons/fa";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { signout } from "../actions/userActions";
+import SearchBox from "./SearchBox";
+import { useEffect } from "react";
+import {
+	listProductCategories,
+	listProductEditions,
+} from "../actions/productActions";
+import LoadingBox from "./LoadingBox";
+import MessageBox from "./MessageBox";
 
 function Header(props) {
 	const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +32,17 @@ function Header(props) {
 		dispatch(signout());
 	};
 
+	const productCategoryList = useSelector(state => state.productCategoryList);
+	const {
+		loading: loadingCategories,
+		error: errorCategories,
+		categories,
+	} = productCategoryList;
+	useEffect(() => {
+		dispatch(listProductCategories());
+		dispatch(listProductEditions());
+	}, [dispatch]);
+
 	return (
 		<header className="navbar">
 			<div className="nav-center">
@@ -40,10 +60,34 @@ function Header(props) {
 				<div className={!isOpen ? "brand-section-links" : "show-nav"}>
 					<div>
 						<div className={isOpen ? "nav-links show-nav" : "nav-links"}>
-							<Link to="/men">MEN</Link>
+							<Link to="/search/gender/male">MEN</Link>
 
-							<Link to="/women">WOMEN</Link>
+							<Link to="/search/gender/female">WOMEN</Link>
+
+							<div className="dropdown">
+								<Link to="#categories">CATEGORIES</Link>
+								<ul className="dropdown-content">
+									{loadingCategories ? (
+										<LoadingBox />
+									) : errorCategories ? (
+										<MessageBox>{errorCategories}</MessageBox>
+									) : (
+										categories.map(c => (
+											<li key={c}>
+												<Link to={`/search/category/${c}`}>{c}</Link>
+											</li>
+										))
+									)}
+								</ul>
+							</div>
 						</div>
+					</div>
+					<div>
+						<Route
+							render={({ history }) => (
+								<SearchBox history={history}></SearchBox>
+							)}
+						></Route>
 					</div>
 					<div>
 						<div className={isOpen ? "nav-links show-nav" : "nav-links"}>
@@ -69,9 +113,10 @@ function Header(props) {
 								</div>
 							)}
 							{userInfo ? (
-								<div className="dropdown">
+								<div className="dropdown cart-container">
 									<Link to="#">
-										<i class="far fa-user"></i>
+										{/* <i class="far fa-user"></i> */}
+										<PersonOutlineIcon fontSize="large" />
 									</Link>
 									<ul className="dropdown-content">
 										<li>

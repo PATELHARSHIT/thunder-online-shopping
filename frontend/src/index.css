@@ -404,8 +404,8 @@ img.large {
 }
 
 .alert-danger {
-	color: #721c24;
-	background-color: #fff3cd;
+	color: #d9534f;
+	background-color: #f8d7da;
 }
 .alert-success {
 	color: #155724;
@@ -968,6 +968,10 @@ button.grey {
 	padding: 2rem;
 }
 
+.desc-cont {
+	padding: 2rem;
+}
+
 .desc-head {
 	font-size: 1.6rem;
 	line-height: 2rem;
@@ -1153,3 +1157,5 @@ input:-webkit-autofill:active {
 	font-size: 1.4rem;
 	margin-left: -0.7rem;
 }
+
+/* Progess */

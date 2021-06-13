@@ -23,6 +23,7 @@ import OrderListScreen from "./screens/OrderListScreen";
 import UserListScreen from "./screens/UserListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
 import SearchScreen from "./screens/SearchScreen";
+import EditionScreen from "./screens/EditionScreen";
 
 function App() {
 	return (
@@ -53,7 +54,7 @@ function App() {
 					></Route>
 					<Route
 						path="/search/edition/:edition"
-						component={SearchScreen}
+						component={EditionScreen}
 						exact
 					></Route>
 					<Route

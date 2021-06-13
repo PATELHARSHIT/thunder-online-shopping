@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { detailsProduct } from "../actions/productActions";
+import { createReview, detailsProduct } from "../actions/productActions";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import Rating from "../components/Rating";
@@ -8,6 +8,9 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { addToWishList, removeFromWishList } from "../actions/wishlistActions";
 import { addToCart } from "../actions/cartActions";
+import { PRODUCT_REVIEW_CREATE_RESET } from "../constants/productConstants";
+import Title from "../components/Title";
+import { Link } from "@material-ui/core";
 
 function ProductScreen(props) {
 	const productId = props.match.params.id;
@@ -20,6 +23,18 @@ function ProductScreen(props) {
 	const productDetails = useSelector(state => state.productDetails);
 
 	const { loading, error, product } = productDetails;
+	const userSignIn = useSelector(state => state.userSignIn);
+	const { userInfo } = userSignIn;
+
+	const productReviewCreate = useSelector(state => state.productReviewCreate);
+	const {
+		loading: loadingReviewCreate,
+		error: errorReviewCreate,
+		success: successReviewCreate,
+	} = productReviewCreate;
+
+	const [rating, setRating] = useState(0);
+	const [comment, setComment] = useState("");
 
 	const wishlist = useSelector(state => state.wishlist);
 	const { wishlistItems } = wishlist;
@@ -51,8 +66,25 @@ function ProductScreen(props) {
 	}
 
 	useEffect(() => {
+		if (successReviewCreate) {
+			window.alert("Review submitted successfully.");
+			setComment("");
+			setRating(0);
+			dispatch({ type: PRODUCT_REVIEW_CREATE_RESET });
+		}
 		dispatch(detailsProduct(productId));
-	}, [dispatch, productId]);
+	}, [dispatch, productId, successReviewCreate]);
+
+	const submitHandler = e => {
+		e.preventDefault();
+		if (comment && rating) {
+			dispatch(
+				createReview(productId, { rating, comment, name: userInfo.name })
+			);
+		} else {
+			alert("Please enter comment and rating");
+		}
+	};
 
 	const handleSize = (e, action) => {
 		setIsSelected(!action);
@@ -272,6 +304,248 @@ function ProductScreen(props) {
 							<span className="desc-text">
 								Easy returns upto 15 days of delivery.
 							</span>
+						</div>
+					</div>
+					<Title title="Reviews" />
+					<div className="product top desc-container">
+						<div className="col-1" style={{ width: "30%", padding: "2rem" }}>
+							<ul>
+								<li>
+									{userInfo ? (
+										<>
+											<form onSubmit={submitHandler}>
+												<div>
+													<b style={{ fontSize: "25px", marginTop: 10 }}>
+														Customer Reviews
+													</b>
+													<div
+														className="row"
+														style={{ justifyContent: "flex-start" }}
+													>
+														<Rating
+															rating={product.rating}
+															caption=" "
+															size="20px"
+														></Rating>
+														<span style={{ fontSize: "20px" }}>
+															{product.rating.toString().substring(0, 3)} out of
+															5
+														</span>
+													</div>
+													<div>{product.reviews.length} reviews</div>
+													<br />
+													<div>
+														5 star{" "}
+														<progress
+															value={
+																(product.reviews.reduce(
+																	(a, c) => a + (c.rating === 5 ? 1 : 0),
+																	0
+																) /
+																	product.reviews.length) *
+																100
+															}
+															max="100"
+														></progress>
+														{" " +
+															Math.floor(
+																(product.reviews.reduce(
+																	(a, c) => a + (c.rating === 5 ? 1 : 0),
+																	0
+																) /
+																	product.reviews.length) *
+																	100
+															) +
+															"%"}
+													</div>
+													<div>
+														4 star{" "}
+														<progress
+															value={
+																(product.reviews.reduce(
+																	(a, c) => a + (c.rating === 4 ? 1 : 0),
+																	0
+																) /
+																	product.reviews.length) *
+																100
+															}
+															max="100"
+														></progress>
+														{" " +
+															Math.floor(
+																(product.reviews.reduce(
+																	(a, c) => a + (c.rating === 4 ? 1 : 0),
+																	0
+																) /
+																	product.reviews.length) *
+																	100
+															) +
+															"%"}
+													</div>
+
+													<div>
+														3 star{" "}
+														<progress
+															value={
+																(product.reviews.reduce(
+																	(a, c) => a + (c.rating === 3 ? 1 : 0),
+																	0
+																) /
+																	product.reviews.length) *
+																100
+															}
+															max="100"
+														></progress>
+														{" " +
+															Math.floor(
+																(product.reviews.reduce(
+																	(a, c) => a + (c.rating === 3 ? 1 : 0),
+																	0
+																) /
+																	product.reviews.length) *
+																	100
+															) +
+															"%"}
+													</div>
+
+													<div>
+														2 star{" "}
+														<progress
+															value={
+																(product.reviews.reduce(
+																	(a, c) => a + (c.rating === 2 ? 1 : 0),
+																	0
+																) /
+																	product.reviews.length) *
+																100
+															}
+															max="100"
+														></progress>
+														{" " +
+															Math.floor(
+																(product.reviews.reduce(
+																	(a, c) => a + (c.rating === 2 ? 1 : 0),
+																	0
+																) /
+																	product.reviews.length) *
+																	100
+															) +
+															"%"}
+													</div>
+
+													<div>
+														1 star{" "}
+														<progress
+															value={
+																(product.reviews.reduce(
+																	(a, c) => a + (c.rating === 1 ? 1 : 0),
+																	0
+																) /
+																	product.reviews.length) *
+																100
+															}
+															max="100"
+														></progress>
+														{" " +
+															Math.floor(
+																(product.reviews.reduce(
+																	(a, c) => a + (c.rating === 1 ? 1 : 0),
+																	0
+																) /
+																	product.reviews.length) *
+																	100
+															) +
+															"%"}
+													</div>
+												</div>
+												<hr />
+												<div>
+													<h2>Write a customer review</h2>
+												</div>
+												<div>
+													<div>
+														{loadingReviewCreate && <LoadingBox></LoadingBox>}
+														{errorReviewCreate && (
+															<MessageBox variant="danger">
+																{errorReviewCreate}
+															</MessageBox>
+														)}
+													</div>
+													<div className="row">
+														<strong>Rating</strong>
+
+														<div className="select-drop">
+															<select
+																id="rating"
+																value={rating}
+																onChange={e => setRating(e.target.value)}
+																className="select-drop-font1"
+															>
+																<option className="select-drop-font1" value="">
+																	Select...
+																</option>
+																<option className="select-drop-font1" value="1">
+																	1- Poor
+																</option>
+																<option className="select-drop-font1" value="2">
+																	2- Fair
+																</option>
+																<option className="select-drop-font1" value="3">
+																	3- Good
+																</option>
+																<option className="select-drop-font1" value="4">
+																	4- Very good
+																</option>
+																<option className="select-drop-font1" value="5">
+																	5- Excelent
+																</option>
+															</select>
+														</div>
+													</div>
+												</div>
+
+												<div>
+													<strong>Comment</strong>
+													<br />
+													<textarea
+														id="comment"
+														value={comment}
+														onChange={e => setComment(e.target.value)}
+														cols="34"
+														rows="5"
+													></textarea>
+												</div>
+												<div>
+													<label />
+													<button
+														className="primary block"
+														type="submit"
+														onClick={submitHandler}
+													>
+														Submit
+													</button>
+												</div>
+											</form>
+										</>
+									) : (
+										<MessageBox>
+											Please <Link to="/signin">Sign In</Link> to write a review
+										</MessageBox>
+									)}
+								</li>
+							</ul>
+						</div>
+						<div className="col-3" style={{ padding: "3rem 8rem" }}>
+							{product.reviews.length === 0 && <div>No Reviews</div>}
+							{product.reviews.map(review => (
+								<span key={review._id}>
+									<strong>{review.name}</strong>
+									<Rating rating={review.rating} caption=" "></Rating>
+									<small>{Date(review.createdAt.toString())}</small>
+									<p>{review.comment}</p>
+									<hr />
+								</span>
+							))}
 						</div>
 					</div>
 				</>

@@ -13,7 +13,7 @@ function RegisterScreen(props) {
 	const [confirmPassword, setConfirmPassword] = useState("");
 
 	const redirect = props.location.search
-		? props.location.search.split("?")[1]
+		? props.location.search.split("=")[1]
 		: "/";
 
 	const userRegister = useSelector(state => state.userRegister);

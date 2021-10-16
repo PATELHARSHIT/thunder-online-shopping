@@ -24,6 +24,7 @@ import UserListScreen from "./screens/UserListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
 import SearchScreen from "./screens/SearchScreen";
 import EditionScreen from "./screens/EditionScreen";
+import DashboardScreen from "./screens/DashboardScreen";
 
 function App() {
 	return (
@@ -78,7 +79,7 @@ function App() {
 						exact
 					></Route>
 					<Route
-						path="/search/category/:category/name/:name/edition/:edition/gender/:gender/min/:min/max/:max/rating/:rating/order/:order"
+						path="/search/category/:category/name/:name/edition/:edition/gender/:gender/min/:min/max/:max/rating/:rating/order/:order/pageNumber/:pageNumber"
 						component={SearchScreen}
 						exact
 					></Route>
@@ -98,10 +99,20 @@ function App() {
 					<AdminRoute
 						path="/productlist"
 						component={ProductListScreen}
+						exact
+					></AdminRoute>
+					<AdminRoute
+						path="/productlist/pageNumber/:pageNumber"
+						component={ProductListScreen}
+						exact
 					></AdminRoute>
 					<AdminRoute
 						path="/orderlist"
 						component={OrderListScreen}
+					></AdminRoute>
+					<AdminRoute
+						path="/dashboard"
+						component={DashboardScreen}
 					></AdminRoute>
 
 					<AdminRoute path="/userlist" component={UserListScreen}></AdminRoute>

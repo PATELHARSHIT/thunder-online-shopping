@@ -30,7 +30,7 @@ body {
 	margin: 0;
 	height: 100vh;
 	font-size: 1.6rem;
-	font-family: "Open Sans", sans-serif;
+	font-family: "Montserrat", sans-serif;
 	/* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
 		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
 		sans-serif; */
@@ -132,6 +132,17 @@ button.secondary {
 	font-size: 1.5rem;
 	font-family: "Montserrat", sans-serif;
 	height: 5rem;
+}
+
+input.primary {
+	border: none;
+	outline: none;
+	background-color: var(--primaryColor);
+	color: white;
+	font-size: 1.5rem;
+	font-family: "Montserrat", sans-serif;
+	height: 5rem;
+	width: 100%;
 }
 
 button.primary {
@@ -401,6 +412,7 @@ img.large {
 .alert-info {
 	color: #0275d8;
 	background-color: #cce5ff;
+	border: 1px solid #0275d8;
 }
 
 .alert-danger {
@@ -825,6 +837,15 @@ button.grey {
 	justify-content: baseline;
 }
 
+.container-a {
+	font-size: 1.2rem;
+	padding: 0.5rem 1rem;
+	border-radius: 20rem;
+	margin-top: 3rem;
+	font-size: 1.3rem;
+	/* text-align: center; */
+}
+
 .savings {
 	font-size: 1.2rem;
 	color: var(--primaryColor);
@@ -1115,6 +1136,7 @@ button.grey {
 	border: 0;
 	font-size: 1.5rem;
 	background-color: transparent;
+	font-family: inherit;
 }
 
 .search button {
@@ -1138,6 +1160,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
+	box-shadow: 0 0 0 30px white inset !important;
 	-webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
@@ -1158,4 +1181,46 @@ input:-webkit-autofill:active {
 	margin-left: -0.7rem;
 }
 
-/* Progess */
+/* Pagination */
+.pagination a {
+	padding: 1rem;
+	margin: 2rem 0.5rem;
+	border-radius: 0.5rem;
+	border: 0.1rem solid var(--primaryColor);
+	font-size: 1.6rem;
+	font-family: inherit;
+	color: var(--primaryColor);
+}
+.pagination a.active {
+	font-weight: bold;
+	background-color: var(--primaryColor);
+	color: white;
+}
+
+/* Dashboard */
+
+.summary > li {
+	border: 0.1rem #c0c0c0 solid;
+	margin: 2rem;
+	border-radius: 0.5rem;
+	flex: 1 1 20rem;
+}
+.summary-title {
+	font-size: 2rem;
+	padding: 1rem;
+}
+.summary-body {
+	font-size: 4rem;
+	padding: 1rem;
+	text-align: center;
+}
+
+.summary-title.color1 {
+	background-color: #c1d1f0;
+}
+.summary-title.color2 {
+	background-color: rgba(220, 57, 18, 0.42);
+}
+.summary-title.color3 {
+	background-color: rgba(255, 153, 0, 0.42);
+}

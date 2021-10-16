@@ -13,6 +13,16 @@ import Title from "../components/Title";
 import { Link } from "@material-ui/core";
 
 function ProductScreen(props) {
+	var calculateRating = star => {
+		return Number(
+			Math.floor(
+				(product.reviews.reduce((a, c) => a + (c.rating === star ? 1 : 0), 0) /
+					product.reviews.length) *
+					100
+			)
+		);
+	};
+
 	const productId = props.match.params.id;
 
 	const [qty, setQty] = useState(1);
@@ -335,127 +345,90 @@ function ProductScreen(props) {
 													<div>{product.reviews.length} reviews</div>
 													<br />
 													<div>
-														5 star{" "}
-														<progress
-															value={
-																(product.reviews.reduce(
-																	(a, c) => a + (c.rating === 5 ? 1 : 0),
-																	0
-																) /
-																	product.reviews.length) *
-																100
-															}
-															max="100"
-														></progress>
-														{" " +
-															Math.floor(
-																(product.reviews.reduce(
-																	(a, c) => a + (c.rating === 5 ? 1 : 0),
-																	0
-																) /
-																	product.reviews.length) *
-																	100
-															) +
-															"%"}
+														<div className="row">
+															<span>5 star</span>
+															<progress
+																value={calculateRating(5)}
+																max="100"
+															></progress>
+															<span>
+																{" " +
+																	(!isNaN(calculateRating(5))
+																		? calculateRating(5)
+																		: 0) +
+																	"%"}
+															</span>
+														</div>
 													</div>
 													<div>
-														4 star{" "}
-														<progress
-															value={
-																(product.reviews.reduce(
-																	(a, c) => a + (c.rating === 4 ? 1 : 0),
-																	0
-																) /
-																	product.reviews.length) *
-																100
-															}
-															max="100"
-														></progress>
-														{" " +
-															Math.floor(
-																(product.reviews.reduce(
-																	(a, c) => a + (c.rating === 4 ? 1 : 0),
-																	0
-																) /
-																	product.reviews.length) *
-																	100
-															) +
-															"%"}
+														<div className="row">
+															<span>4 star</span>
+															<progress
+																value={calculateRating(4)}
+																max="100"
+															></progress>
+															<span>
+																{" " +
+																	(!isNaN(calculateRating(4))
+																		? calculateRating(4)
+																		: 0) +
+																	"%"}
+															</span>
+														</div>
 													</div>
 
 													<div>
-														3 star{" "}
-														<progress
-															value={
-																(product.reviews.reduce(
-																	(a, c) => a + (c.rating === 3 ? 1 : 0),
-																	0
-																) /
-																	product.reviews.length) *
-																100
-															}
-															max="100"
-														></progress>
-														{" " +
-															Math.floor(
-																(product.reviews.reduce(
-																	(a, c) => a + (c.rating === 3 ? 1 : 0),
-																	0
-																) /
-																	product.reviews.length) *
-																	100
-															) +
-															"%"}
+														<div className="row">
+															<span>3 star</span>
+															<progress
+																value={calculateRating(3)}
+																max="100"
+															></progress>
+															<span>
+																{" " +
+																	(!isNaN(calculateRating(3))
+																		? calculateRating(3)
+																		: 0) +
+																	"%"}
+															</span>
+														</div>
 													</div>
 
 													<div>
-														2 star{" "}
-														<progress
-															value={
-																(product.reviews.reduce(
-																	(a, c) => a + (c.rating === 2 ? 1 : 0),
-																	0
-																) /
-																	product.reviews.length) *
-																100
-															}
-															max="100"
-														></progress>
-														{" " +
-															Math.floor(
-																(product.reviews.reduce(
-																	(a, c) => a + (c.rating === 2 ? 1 : 0),
-																	0
-																) /
-																	product.reviews.length) *
-																	100
-															) +
-															"%"}
+														<div className="row">
+															<span>2 star</span>
+															<progress
+																value={calculateRating(2)}
+																max="100"
+															></progress>
+															<span>
+																{" " +
+																	(!isNaN(calculateRating(2))
+																		? calculateRating(2)
+																		: 0) +
+																	"%"}
+															</span>
+														</div>
 													</div>
 
 													<div>
-														1 star{" "}
-														<progress
-															value={
-																(product.reviews.reduce(
-																	(a, c) => a + (c.rating === 1 ? 1 : 0),
-																	0
-																) /
-																	product.reviews.length) *
-																100
-															}
-															max="100"
-														></progress>
-														{" " +
-															Math.floor(
-																(product.reviews.reduce(
-																	(a, c) => a + (c.rating === 1 ? 1 : 0),
-																	0
-																) /
-																	product.reviews.length) *
-																	100
-															) +
-															"%"}
+														<div
+															className="row"
+															style={{ justifyContent: "space-between" }}
+														>
+															<span>1 star</span>
+															<progress
+																value={calculateRating(1)}
+																max="100"
+															></progress>
+															<span>
+																{" " +
+																	(!isNaN(calculateRating(1))
+																		? calculateRating(1)
+																		: 0) +
+																	"%"}
+															</span>
+														</div>
 													</div>
 												</div>
 												<hr />

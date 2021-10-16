@@ -20,10 +20,11 @@ function SearchScreen(props) {
 		max = 0,
 		rating = 0,
 		order = "newest",
+		pageNumber = 1,
 	} = useParams();
 	const dispatch = useDispatch();
 	const productList = useSelector(state => state.productList);
-	const { loading, error, products } = productList;
+	const { loading, error, products, page, pages } = productList;
 
 	const productEditionList = useSelector(state => state.productEditionList);
 	const {
@@ -41,6 +42,7 @@ function SearchScreen(props) {
 	useEffect(() => {
 		dispatch(
 			listProducts({
+				pageNumber,
 				name: name !== "all" ? name : "",
 				category: category !== "all" ? category : "",
 				edition: edition !== "all" ? edition : "",
@@ -51,9 +53,21 @@ function SearchScreen(props) {
 				order,
 			})
 		);
-	}, [category, dispatch, edition, gender, max, min, name, order, rating]);
+	}, [
+		category,
+		dispatch,
+		edition,
+		gender,
+		max,
+		min,
+		name,
+		order,
+		rating,
+		pageNumber,
+	]);
 
 	const getFilterUrl = filter => {
+		const filterPage = filter.page || pageNumber;
 		const filterCategory = filter.category || category;
 		const filterName = filter.name || name;
 		const filterEdition = filter.edition || edition;
@@ -62,7 +76,7 @@ function SearchScreen(props) {
 		const sortOrder = filter.order || order;
 		const filterMin = filter.min ? filter.min : filter.min === 0 ? 0 : min;
 		const filterMax = filter.max ? filter.max : filter.max === 0 ? 0 : max;
-		return `/search/category/${filterCategory}/name/${filterName}/edition/${filterEdition}/gender/${filterGender}/min/${filterMin}/max/${filterMax}/rating/${filterRating}/order/${sortOrder}`;
+		return `/search/category/${filterCategory}/name/${filterName}/edition/${filterEdition}/gender/${filterGender}/min/${filterMin}/max/${filterMax}/rating/${filterRating}/order/${sortOrder}/pagenumber/${filterPage}`;
 	};
 	return (
 		<div>
@@ -342,6 +356,17 @@ function SearchScreen(props) {
 											<Product key={product._id} product={product}></Product>
 										))}
 									</div>
+								</div>
+								<div className="row center pagination">
+									{[...Array(pages).keys()].map(x => (
+										<Link
+											className={x + 1 === page ? "active" : ""}
+											key={x + 1}
+											to={getFilterUrl({ page: x + 1 })}
+										>
+											{x + 1}
+										</Link>
+									))}
 								</div>
 							</>
 						)}

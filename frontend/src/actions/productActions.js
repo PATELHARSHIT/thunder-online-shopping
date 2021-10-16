@@ -28,6 +28,7 @@ import {
 
 export const listProducts =
 	({
+		pageNumber = "",
 		name = "",
 		category = "",
 		edition = "",
@@ -43,7 +44,7 @@ export const listProducts =
 		});
 		try {
 			const { data } = await Axios.get(
-				`/api/products?name=${name}&category=${category}&edition=${edition}&gender=${gender}&min=${min}&max=${max}&rating=${rating}&order=${order}`
+				`/api/products?pageNumber=${pageNumber}&name=${name}&category=${category}&edition=${edition}&gender=${gender}&min=${min}&max=${max}&rating=${rating}&order=${order}`
 			);
 			dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
 		} catch (error) {
